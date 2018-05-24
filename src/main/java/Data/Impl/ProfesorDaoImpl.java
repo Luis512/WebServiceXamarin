@@ -14,12 +14,13 @@ import java.util.List;
 public class ProfesorDaoImpl implements ProfesorDao {
 
     private Connection conn;
-    public ProfesorDaoImpl(){
+
+    public ProfesorDaoImpl() {
         DatabaseConnection db = new DatabaseConnection();
         conn = db.GetConnection();
     }
 
-    public List<Profesor> getProfesores(){
+    public List<Profesor> getProfesores() {
         List<Profesor> profesores = new ArrayList<Profesor>();
 
         try {
@@ -47,7 +48,7 @@ public class ProfesorDaoImpl implements ProfesorDao {
         Profesor profesor = new Profesor();
 
         try {
-            PreparedStatement ps = conn.prepareStatement("select * from aulavirtual.Profesor where Id="+id);
+            PreparedStatement ps = conn.prepareStatement("select * from aulavirtual.Profesor where Id=" + id);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
@@ -65,7 +66,26 @@ public class ProfesorDaoImpl implements ProfesorDao {
     }
 
     @Override
-    public void saveProfesor(Long id, String nombre, String apellido, boolean sexo) {
-
+    public int saveProfesor(Profesor profesor) {
+        try {
+            PreparedStatement ps = conn.prepareStatement("INSERT INTO aulavirtual.Profesor ("
+                    + "Id,"
+                    + "Nombre,"
+                    + "Apellido,"
+                    + "Password,"
+                    + "Sexo)"
+                    + "VALUES (?,?,?,?,?)");
+            ps.setLong(1, profesor.getId());
+            ps.setString(2, profesor.getNombre());
+            ps.setString(3, profesor.getApellido());
+            ps.setString(4, profesor.getPassword());
+            ps.setBoolean(5, profesor.isSexo());
+            return ps.executeUpdate();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return 0;
     }
 }
+

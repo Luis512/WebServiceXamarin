@@ -10,5 +10,5 @@ public interface ProfesorDao {
 
     Profesor getProfesor(Long id);
 
-    void saveProfesor(Long id, String nombre, String apellido, boolean sexo);
+    int saveProfesor(Profesor profesor);
 }

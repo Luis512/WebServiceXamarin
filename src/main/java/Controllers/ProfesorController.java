@@ -1,13 +1,9 @@
 package Controllers;
 
-import Config.DatabaseConnection;
 import Data.Impl.ProfesorDaoImpl;
 import Data.ProfesorDao;
 import Models.Profesor;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -33,4 +29,22 @@ public class ProfesorController {
         ProfesorDao profesorDao = new ProfesorDaoImpl();
         return profesorDao.getProfesor(id);
     }
+
+    @RequestMapping(method = RequestMethod.POST,
+            value = "/profesor/register",
+            produces = APPLICATION_JSON_VALUE)
+    public int register(@RequestParam("id") Long id,
+                             @RequestParam("nombre") String nombre,
+                             @RequestParam("apellido") String apellido,
+                             @RequestParam("password") String password,
+                             @RequestParam("sexo") boolean sexo)
+    {
+
+        Profesor profesor = new Profesor(id, nombre, apellido, password, sexo);
+        ProfesorDao profesorDao = new ProfesorDaoImpl();
+        return profesorDao.saveProfesor(profesor);
+    }
+
+
+
 }
