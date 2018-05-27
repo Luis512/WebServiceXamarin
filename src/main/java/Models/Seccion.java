@@ -3,13 +3,13 @@ package Models;
 public class Seccion {
 
     private long Id;
-    private long Id_Profesor;
+    private long IdProfesor;
     private String Numero;
     private int CantidadEstudiantes;
 
-    public Seccion(long id, long id_profesor, String numero, int cantidadEstudiantes) {
+    public Seccion(long id, long idprofesor, String numero, int cantidadEstudiantes) {
         Id = id;
-        Id_Profesor = id_profesor;
+        IdProfesor = idprofesor;
         Numero = numero;
         CantidadEstudiantes = cantidadEstudiantes;
     }
@@ -25,12 +25,12 @@ public class Seccion {
         Id = id;
     }
 
-    public long getId_Profesor() {
-        return Id_Profesor;
+    public long getIdProfesor() {
+        return IdProfesor;
     }
 
-    public void setId_Profesor(long id_Profesor) {
-        Id_Profesor = id_Profesor;
+    public void setIdProfesor(long id_Profesor) {
+        IdProfesor = id_Profesor;
     }
 
     public String getNumero() {

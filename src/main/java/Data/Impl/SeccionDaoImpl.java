@@ -34,6 +34,7 @@ public class SeccionDaoImpl implements SeccionDao {
                 seccion.setId(rs.getLong("Id"));
                 seccion.setNumero(rs.getString("Numero"));
                 seccion.setCantidadEstudiantes(rs.getInt("CantidadEstudiantes"));
+                seccion.setIdProfesor(rs.getInt("IdProfesor"));
                 secciones.add(seccion);
             }
         } catch (SQLException e) {
@@ -55,6 +56,7 @@ public class SeccionDaoImpl implements SeccionDao {
                 seccion.setId(rs.getLong("Id"));
                 seccion.setNumero(rs.getString("Numero"));
                 seccion.setCantidadEstudiantes(rs.getInt("CantidadEstudiantes"));
+                seccion.setIdProfesor(rs.getInt("IdProfesor"));
             }
         } catch (SQLException e) {
             // TODO Auto-generated catch block
