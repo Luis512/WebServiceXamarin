@@ -51,4 +51,13 @@ public class ClaseController {
         ClaseDao claseDao = new ClaseDaoImpl();
         return claseDao.getClasesBySeccion(id);
     }
+
+    @RequestMapping(method = RequestMethod.DELETE,
+            value = "/clase/{id}",
+            produces = APPLICATION_JSON_VALUE)
+    public int deleteClase(@PathVariable("id") Long id)
+    {
+        ClaseDao claseDao = new ClaseDaoImpl();
+        return claseDao.deleteClase(id);
+    }
 }

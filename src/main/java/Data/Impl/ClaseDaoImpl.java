@@ -109,4 +109,16 @@ public class ClaseDaoImpl implements ClaseDao {
         }
         return 0;
     }
+
+    @Override
+    public int deleteClase(Long id) {
+        try {
+            PreparedStatement ps = conn.prepareStatement("DELETE FROM aulavirtual.Clases WHERE Id="+id);
+            return ps.executeUpdate();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return 0;
+    }
 }

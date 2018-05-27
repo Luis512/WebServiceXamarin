@@ -13,4 +13,6 @@ public interface ClaseDao {
     List<Clase> getClasesBySeccion(Long id);
 
     int saveClase(Clase clase);
+
+    int deleteClase(Long id);
 }
